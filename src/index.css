@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Root Variables ── */
+:root {
+  --rose-glow: rgba(244, 63, 94, 0.4);
+  --pink-glow: rgba(236, 72, 153, 0.3);
+  --gold-glow: rgba(251, 191, 36, 0.3);
+}
+
+/* ── Base ── */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0d0010;
+  color: #f8e8f0;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cursive {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a0020; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #e11d48, #9333ea); border-radius: 99px; }
+
+/* ── Animated Gradient Background ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25%       { transform: translateX(20px) translateY(-15px) rotate(5deg); }
+  50%       { transform: translateX(-10px) translateY(-30px) rotate(-3deg); }
+  75%       { transform: translateX(15px) translateY(-10px) rotate(2deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.15); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.12); }
+  70%       { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 20px var(--rose-glow), 0 0 40px var(--rose-glow); }
+  50%       { box-shadow: 0 0 30px var(--pink-glow), 0 0 60px var(--pink-glow); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50%       { border-color: #f43f5e; }
+}
+
+@keyframes petals {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(1080deg) translateX(80px); opacity: 0; }
+}
+
+@keyframes starFloat {
+  0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+  50%  { transform: translateY(-20px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.6; }
+}
+
+@keyframes particleRise {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(-20vh) scale(1.5) rotate(180deg); opacity: 0; }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+/* ── Glassmorphism Utilities ── */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-rose {
+  background: rgba(244, 63, 94, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+.glass-dark {
+  background: rgba(10, 0, 20, 0.6);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Glow Effects ── */
+.glow-rose   { box-shadow: 0 0 30px var(--rose-glow), 0 0 60px rgba(244,63,94,0.2); }
+.glow-pulse  { animation: borderGlow 3s ease-in-out infinite; }
+.text-glow   { text-shadow: 0 0 20px rgba(244,63,94,0.8), 0 0 40px rgba(236,72,153,0.4); }
+.text-glow-gold { text-shadow: 0 0 20px rgba(251,191,36,0.8), 0 0 40px rgba(251,191,36,0.4); }
+
+/* ── Shimmer Text ── */
+.shimmer-text {
+  background: linear-gradient(90deg, #f43f5e 0%, #ec4899 25%, #fbbf24 50%, #ec4899 75%, #f43f5e 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Heartbeat ── */
+.heartbeat { animation: heartbeat 2s ease-in-out infinite; }
+
+/* ── Card 3D Tilt ── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+.tilt-card-inner { transform: translateZ(20px); }
+
+/* ── Custom Cursor ── */
+#cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+/* ── Snap Sections ── */
+.snap-section {
+  scroll-snap-align: start;
+}
+
+/* ── Polaroid Cards ── */
+.polaroid {
+  background: rgba(255,255,255,0.06);
+  padding: 12px 12px 36px 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  transform-origin: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.polaroid:hover {
+  box-shadow: 0 16px 48px rgba(244,63,94,0.3), 0 0 0 1px rgba(244,63,94,0.2);
+}
+
+/* ── Tape Effect ── */
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 60px;
+  height: 22px;
+  background: rgba(255, 220, 100, 0.35);
+  border-radius: 2px;
+  border: 1px solid rgba(255, 220, 100, 0.2);
+}
+
+/* ── Floating Petal ── */
+.petal { animation: petals var(--duration, 8s) var(--delay, 0s) linear infinite; }
+
+/* ── Star Twinkle ── */
+.star { animation: twinkle var(--dur, 3s) var(--del, 0s) ease-in-out infinite; }
+
+/* ── Magnetic Button ── */
+.magnetic-btn {
+  transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+/* ── Loading Screen ── */
+.loading-dot { animation: loadingPulse 1.4s ease-in-out infinite; }
+.loading-dot:nth-child(2) { animation-delay: 0.2s; }
+.loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ── Typewriter ── */
+.typewriter-text {
+  overflow: hidden;
+  white-space: normal;
+  border-right: 3px solid #f43f5e;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* ── Confetti Canvas ── */
+#confetti-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Section Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244,63,94,0.4), rgba(236,72,153,0.4), transparent);
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* ── Reasons Card ── */
+.reason-card {
+  background: linear-gradient(135deg, rgba(244,63,94,0.1), rgba(147,51,234,0.1));
+  border: 1px solid rgba(244,63,94,0.2);
+  transition: all 0.3s ease;
+}
+.reason-card:hover {
+  background: linear-gradient(135deg, rgba(244,63,94,0.2), rgba(147,51,234,0.2));
+  border-color: rgba(244,63,94,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(244,63,94,0.2);
+}
+
+/* ── Timeline ── */
+.timeline-line {
+  background: linear-gradient(180deg, transparent, #f43f5e 20%, #ec4899 50%, #9333ea 80%, transparent);
+}
+
+/* ── Scroll Reveal ── */
+.reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  #cursor-glow { display: none; }
+}
